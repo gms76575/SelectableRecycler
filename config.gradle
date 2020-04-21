@@ -23,7 +23,6 @@ ext {
 
     /*=================================module中公共用到的引用============================================*/
     globalDependencies = [
-            "constraintLayout" : "com.android.support.constraint:constraint-layout:1.1.2",
-            "glide" : "com.github.bumptech.glide:glide:4.7.1",
+            "constraintLayout" : "com.android.support.constraint:constraint-layout:1.1.2"
     ]
 }

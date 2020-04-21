@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.test">
+    package="com.gengms.test">
 
     <application
         android:allowBackup="true"
@@ -9,16 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.gengms.test.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LongClickMultiActivity"/>
-        <activity android:name=".FixedMultiActivity"/>
-        <activity android:name=".FixedSingleActivity"/>
+        <activity android:name="com.gengms.test.LongClickMultiActivity"/>
+        <activity android:name="com.gengms.test.FixedMultiActivity"/>
+        <activity android:name="com.gengms.test.FixedSingleActivity"/>
     </application>
 
 </manifest>
