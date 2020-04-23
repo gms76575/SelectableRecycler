@@ -1,30 +1,26 @@
 package com.gengms.test
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.CheckBox
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.gengms.baserecycler.selectable.OnSelectChangeListener
 import com.gengms.baserecycler.selectable.SelectMode
+import kotlinx.android.synthetic.main.activity_long_click_multi.*
 
 open class FixedMultiActivity : AppCompatActivity() {
 
     protected val dataList = getTestDataList()
-    protected var adapter : MyMultiAdapter = MyMultiAdapter(this, dataList, SelectMode.FIXED_MULTI)
-    private var checkSelectAll : CheckBox ?= null
+    protected lateinit var adapter : MyMultiAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_long_click_multi)
-        checkSelectAll = findViewById<CheckBox>(R.id.check_select_all)
-        checkSelectAll?.setOnClickListener {
-            val isChecked = checkSelectAll!!.isChecked
+        check_select_all?.setOnClickListener {
+            val isChecked = check_select_all!!.isChecked
             adapter.selectAll(isChecked)
         }
-        findViewById<Button>(R.id.btn_complete).setOnClickListener {
+        btn_complete.setOnClickListener {
             onComplete()
         }
         initRecycler()
@@ -47,18 +43,18 @@ open class FixedMultiActivity : AppCompatActivity() {
     }
 
     protected open fun initRecycler() {
-        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = adapter
+        recycler_view.layoutManager = LinearLayoutManager(this)
+        adapter  = MyMultiAdapter(this, dataList, SelectMode.FIXED_MULTI)
+        recycler_view.adapter = adapter
         adapter.setOnSelectChangeListener(object :
             OnSelectChangeListener {
             override fun onSelectChange(position: Int, isSelected: Boolean) {
-                val toast: String = if (isSelected) "check " else "uncheck ";
+                val toast: String = if (isSelected) "check " else "uncheck "
                 Toast.makeText(
                     this@FixedMultiActivity, toast + dataList[position].name,
                     Toast.LENGTH_SHORT
                 ).show()
-                checkSelectAll?.isChecked = adapter.isSelectAll()
+                check_select_all?.isChecked = adapter.isSelectAll()
             }
         })
     }

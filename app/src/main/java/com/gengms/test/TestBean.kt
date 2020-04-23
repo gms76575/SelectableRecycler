@@ -1,6 +1,4 @@
 package com.gengms.test
 
-class TestBean(var code : String? = null,
-               var name : String? = null) {
-
-}
+data class TestBean(var code : String? = null,
+               var name : String? = null)

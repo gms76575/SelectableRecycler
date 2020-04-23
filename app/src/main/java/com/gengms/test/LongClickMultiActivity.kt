@@ -2,26 +2,23 @@ package com.gengms.test
 
 import android.os.Bundle
 import android.view.View
-import android.widget.LinearLayout
 import com.gengms.baserecycler.selectable.OnSelectStateChangeListener
 import com.gengms.baserecycler.selectable.SelectMode
 import com.gengms.baserecycler.selectable.SelectState
+import kotlinx.android.synthetic.main.activity_long_click_multi.*
 
 class LongClickMultiActivity : FixedMultiActivity() {
 
-    private var linearButton : LinearLayout ?= null
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        linearButton = findViewById<LinearLayout>(R.id.linear_button)
-        linearButton?.visibility = View.GONE
+        linear_button?.visibility = View.GONE
         adapter.setOnSelectStateChangeListener(object :
             OnSelectStateChangeListener {
             override fun onSelectStateChange(selectState: SelectState) {
                 if (SelectState.DOING == selectState) {
-                    linearButton?.visibility = View.VISIBLE
+                    linear_button?.visibility = View.VISIBLE
                 } else {
-                    linearButton?.visibility = View.GONE
+                    linear_button?.visibility = View.GONE
                 }
             }
         })
@@ -34,7 +31,7 @@ class LongClickMultiActivity : FixedMultiActivity() {
 
     override fun onComplete() {
         super.onComplete()
-        linearButton?.visibility = View.GONE
+        linear_button?.visibility = View.GONE
     }
 
 }

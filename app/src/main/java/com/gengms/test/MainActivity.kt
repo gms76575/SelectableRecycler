@@ -3,20 +3,23 @@ package com.gengms.test
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        findViewById<Button>(R.id.btn_long_click_multi).setOnClickListener { v -> startActivity(
+        btn_long_click_multi.setOnClickListener {
+            startActivity(
             Intent(this, LongClickMultiActivity::class.java)
         ) }
-        findViewById<Button>(R.id.btn_fixed_multi).setOnClickListener { v -> startActivity(
+        btn_fixed_multi.setOnClickListener {
+            startActivity(
             Intent(this, FixedMultiActivity::class.java)
         ) }
-        findViewById<Button>(R.id.btn_fixed_single).setOnClickListener { v -> startActivity(
+        btn_fixed_single.setOnClickListener {
+            startActivity(
             Intent(this, FixedSingleActivity::class.java)
         ) }
     }
