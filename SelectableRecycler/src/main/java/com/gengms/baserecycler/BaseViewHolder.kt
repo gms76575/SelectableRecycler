@@ -13,12 +13,12 @@ open class BaseViewHolder(itemView : View) : ViewHolder(itemView) {
     init {
         itemView.setOnClickListener {
             if (mOnItemClickListener != null) {
-                mOnItemClickListener!!.onItemClicked(this, adapterPosition)
+                mOnItemClickListener!!.onItemClicked(this, layoutPosition)
             }
         }
         itemView.setOnLongClickListener {
             if (mOnItemLongClickListener != null) {
-                return@setOnLongClickListener mOnItemLongClickListener!!.onItemLongClicked(this, adapterPosition)
+                return@setOnLongClickListener mOnItemLongClickListener!!.onItemLongClicked(this, layoutPosition)
             }
             return@setOnLongClickListener false
         }

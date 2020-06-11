@@ -42,6 +42,9 @@ abstract class SelectableRecyclerAdapter<T>(
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
         val selectableHolder : SelectableViewHolder = holder as SelectableViewHolder
+        selectableHolder.checkBox.isClickable = false
+        selectableHolder.checkBox.isFocusableInTouchMode = false
+        selectableHolder.checkBox.isFocusable = false
         if (selectState == SelectState.DONE) {
             selectableHolder.checkBox.visibility = View.GONE
             holder.setOnItemLongClickListener(this)
@@ -49,13 +52,6 @@ abstract class SelectableRecyclerAdapter<T>(
         } else {
             selectableHolder.checkBox.visibility = View.VISIBLE
             selectableHolder.checkBox.isChecked = dataList[position].selected
-            selectableHolder.checkBox.tag = position
-            selectableHolder.checkBox.setOnClickListener { v ->
-                run {
-                    val pos = selectableHolder.checkBox.tag as Int
-                    onItemClicked(holder, pos)
-                }
-            }
             holder.setOnItemLongClickListener(mOnItemLongClickListener)
             holder.setOnItemClickListener(this)
         }
